@@ -1,3 +1,30 @@
+# Project Name BOOK
+
+**Author**: Eman Mkhareez && Ghidaa Alnattah
+**Version**: 1.0.0 (increment the patch/fix version number if you make more commits past your first submission)
+
+## Overview
+until now just user login and render  his name
+
+## Getting Started
+click on login 
+after that click on profile to show your name 
+
+## Architecture
+<!-- Provide a detailed description of the application design. What technologies (languages, libraries, etc) you're using, and any other relevant design information. -->
+using react_app and autho0
+
+## Change Log
+<!-- Use this area to document the iterative changes made to your application as each feature is successfully implemented. Use time stamps. Here's an example:
+
+01-01-2001 4:59pm - Application now has a fully-functional express server, with a GET route for the location resource. -->
+11/7/2021 4:00 finish login part 
+
+## Credit and Collaborations
+no one
+
+
+
 # Start your own "Can of Books" App
 
 This repository has starter code to begin work on creating your own online bookshelf.
