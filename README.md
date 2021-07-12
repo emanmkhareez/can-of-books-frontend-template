@@ -23,6 +23,15 @@ using react_app and autho0
 ## Credit and Collaborations
 no one
 
+Name of feature: login &logout
+
+Estimate of time needed to complete: 30minute
+
+Start time:2:00
+
+Finish time: 4:00
+
+Actual time needed to complete: 30minute
 
 
 # Start your own "Can of Books" App
