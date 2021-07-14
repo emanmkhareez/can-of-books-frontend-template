@@ -6,6 +6,7 @@ import { withAuth0 } from '@auth0/auth0-react';
 import Card from 'react-bootstrap/Card'
 import BookModal from './components/BookModal';
 import axios from 'axios'
+import UpdateForm from './components/UpdateForm';
 class MyFavoriteBooks extends React.Component {
   constructor(props) {
     super(props)
@@ -13,7 +14,17 @@ class MyFavoriteBooks extends React.Component {
     this.state = {
       booksArr: [],
       userEmail: '',
-      show:false
+      show:false,
+      index:0,
+      showdata:false,
+      name:'',
+      description:'',
+      status:'',
+      img:''
+
+
+
+
     }
   }
 
@@ -98,8 +109,51 @@ this.setState({
     })
   }
 
+  FormUpdate= async (index)=>{
+    await this.setState({
+      showdata:true,
+      index:index,
+      name:this.state.booksArr[index].name,
+      description:this.state.booksArr[index].description,
+      status:this.state.booksArr[index].status,
+      img:this.state.booksArr[index].img
+     
 
 
+
+    })
+    console.log("hhhhh",this.state.index)
+
+}
+
+// localhost:3006/updateBook/1?email=emkhareez19@gmail.com
+//update fun
+updateBook= async (event)=>{
+  event.preventDefault();
+
+  // let name=event.target.name2.value
+  // let  description=event.target.description2.value
+  // let  status=event.target.status2.value
+  //   let img=event.target.img2.value
+   
+  let paramsData={
+    name:event.target.name2.value,
+    description:event.target.description2.value,
+    status:event.target.status2.value,
+    img:event.target.img2.value,
+    email:this.state.userEmail
+
+  }
+
+let ResultUpdate=await axios.put(`${process.env.REACT_APP_PORT}/updateBook/${this.state.index}`,paramsData)
+
+this.setState({
+  booksArr:ResultUpdate.data
+})
+
+
+
+}
   render() {
     return (
       <Jumbotron>
@@ -115,6 +169,16 @@ addbook={this.addbook}
 handleClose={this.handleClose}
 showModal={this.showModal}
 />
+
+{this.state.showdata&&
+        <UpdateForm
+        name={this.state.name}
+        description={this.state.description}
+        status={this.state.status}
+        img={this.state.img}
+        updateData={this.updateBook}
+        />
+        }
         <div className="bookcont">
           {
             
@@ -129,6 +193,7 @@ showModal={this.showModal}
                     <Card.Title>{book.name}</Card.Title>
                     <img src={book.img} alt={book.name} style={{width:70,height:60}} />
                     <button style={{marginLeft:"20px"}} onClick={()=>this.deleteFun(idx)}>delete</button>
+                    <button style={{marginLeft:"20px"}} onClick={()=>this.FormUpdate(idx)}>Update</button>
 
                     <Card.Text>
                       {book.description}
@@ -145,6 +210,8 @@ showModal={this.showModal}
 
           }
         </div>
+        
+        
 
 
       </Jumbotron>
