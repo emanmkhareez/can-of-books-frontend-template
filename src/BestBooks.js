@@ -87,11 +87,15 @@ this.setState({
     }
     let deleteResult=await axios.delete(`${process.env.REACT_APP_PORT}/deleteBook/${index}`,{params:paramObj})
 //when dealing from backend
-    // ownerName: req.params >> index:req.query
+
+    // index: req.params >> parms:req.query
 
     // let bookData = await axios.delete(`${process.env.REACT_APP_PORT}/deleteBook`,{params:paramObj})
     // // index: req.query >> ownerName:req.query
 
+    this.setState({
+      booksArr:deleteResult.data
+    })
   }
 
 
